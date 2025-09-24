@@ -231,12 +231,13 @@
             background: white;
             border-radius: 50%;
             opacity: 0.6;
-            animation: particles 8s linear infinite;
+            animation: particles var(--dur, 7s) linear 1 forwards;
+            will-change: transform, opacity;
         }
 
         @keyframes particles {
             0% {
-                transform: translateY(100vh) translateX(0);
+                transform: translateY(110vh) translateX(0);
                 opacity: 0;
             }
             10% {
@@ -246,7 +247,7 @@
                 opacity: 0.6;
             }
             100% {
-                transform: translateY(-100px) translateX(100px);
+                transform: translateY(-10px) translateX(100px);
                 opacity: 0;
             }
         }
@@ -296,30 +297,30 @@
     </div>
 
     <script>
-        // Create floating particles
         function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.animationDelay = Math.random() * 8 + 's';
-            particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
-            document.querySelector('.background-animation').appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 8000);
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + 'vw';
+          const dur = 5 + Math.random() * 3; // 5s to 8s
+          particle.style.setProperty('--dur', `${dur}s`);
+          particle.style.animationDelay = (Math.random() * 1.5) + 's';
+      
+          document.querySelector('.background-animation').appendChild(particle);
+      
+          // remove exactly when the one-shot animation finishes
+          particle.addEventListener('animationend', () => particle.remove(), { once: true });
         }
-
-        // Create particles every 500ms
+      
+        // spawn cadence
         setInterval(createParticle, 500);
-
-        // Add a subtle mouse move effect
+      
+        // mouse move effect unchanged
         document.addEventListener('mousemove', (e) => {
-            const container = document.querySelector('.container');
-            const x = (e.clientX / window.innerWidth) * 20 - 10;
-            const y = (e.clientY / window.innerHeight) * 20 - 10;
-            container.style.transform = `translate(${x}px, ${y}px)`;
+          const container = document.querySelector('.container');
+          const x = (e.clientX / window.innerWidth) * 20 - 10;
+          const y = (e.clientY / window.innerHeight) * 20 - 10;
+          container.style.transform = `translate(${x}px, ${y}px)`;
         });
-    </script>
+      </script>
 </body>
 </html>
