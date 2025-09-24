@@ -231,25 +231,29 @@
             background: white;
             border-radius: 50%;
             opacity: 0.6;
-            animation: particles var(--dur, 7s) linear 1 forwards;
+            animation: particles var(--dur, 7s) linear 1; /* no forwards */
             will-change: transform, opacity;
         }
 
+        /* start well below, end well above */
         @keyframes particles {
             0% {
-                transform: translateY(110vh) translateX(0);
+                transform: translateY(120vh) translateX(0);
                 opacity: 0;
             }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
+            10% { opacity: 0.6; }
+            80% { opacity: 0.6; }
             100% {
-                transform: translateY(-10px) translateX(100px);
-                opacity: 0;
+                transform: translateY(-150vh) translateX(var(--dx, 100px)); /* fly far past top */
+                opacity: 0; /* invisible before animation ends */
             }
+        }
+
+        /* optional soft fade near the top so nothing ever looks like it touches */
+        .background-animation {
+        -webkit-mask-image: linear-gradient(to top, black 85%, transparent 100%);
+                mask-image: linear-gradient(to top, black 85%, transparent 100%);
+        pointer-events: none;
         }
     </style>
 </head>
@@ -301,26 +305,32 @@
           const particle = document.createElement('div');
           particle.className = 'particle';
           particle.style.left = Math.random() * 100 + 'vw';
-          const dur = 5 + Math.random() * 3; // 5s to 8s
+      
+          // duration 5 to 8s
+          const dur = 5 + Math.random() * 3;
           particle.style.setProperty('--dur', `${dur}s`);
-          particle.style.animationDelay = (Math.random() * 1.5) + 's';
+      
+          // random horizontal drift left or right up to 140px
+          const dx = (Math.random() * 280 - 140) | 0;
+          particle.style.setProperty('--dx', `${dx}px`);
+      
+          // slight spawn desync
+          particle.style.animationDelay = (Math.random() * 1.2) + 's';
       
           document.querySelector('.background-animation').appendChild(particle);
       
-          // remove exactly when the one-shot animation finishes
+          // remove as soon as animation finishes
           particle.addEventListener('animationend', () => particle.remove(), { once: true });
         }
       
-        // spawn cadence
         setInterval(createParticle, 500);
       
-        // mouse move effect unchanged
         document.addEventListener('mousemove', (e) => {
           const container = document.querySelector('.container');
           const x = (e.clientX / window.innerWidth) * 20 - 10;
           const y = (e.clientY / window.innerHeight) * 20 - 10;
           container.style.transform = `translate(${x}px, ${y}px)`;
         });
-      </script>
+      </script>      
 </body>
 </html>
