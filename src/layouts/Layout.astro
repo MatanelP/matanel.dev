@@ -1,0 +1,78 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description?: string
+}
+
+const { title, description = "Matanel Pataky - Software Engineer" } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>{title}</title>
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      code, pre, .mono {
+        font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+      }
+    </style>
+    <script is:inline>
+      // Prevent flash - check theme before page renders
+      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (theme === 'light') document.documentElement.classList.add('light');
+    </script>
+  </head>
+  <body class="antialiased">
+    <!-- Mouse spotlight effect -->
+    <div id="spotlight" class="pointer-events-none fixed inset-0 z-30"></div>
+    
+    <slot />
+    
+    <script>
+      // Theme toggle
+      function updateSpotlight(x: number, y: number) {
+        const spotlight = document.getElementById('spotlight');
+        const isLight = document.documentElement.classList.contains('light');
+        if (spotlight) {
+          const color = isLight ? 'rgba(13, 148, 136, 0.08)' : 'rgba(100, 255, 218, 0.15)';
+          const mid = isLight ? 'rgba(13, 148, 136, 0.04)' : 'rgba(100, 255, 218, 0.08)';
+          const outer = isLight ? 'rgba(13, 148, 136, 0.02)' : 'rgba(100, 255, 218, 0.03)';
+          spotlight.style.background = `radial-gradient(125px at ${x}px ${y}px, ${color}, ${mid} 40%, ${outer} 60%, transparent)`;
+        }
+      }
+
+      let lastX = window.innerWidth / 2;
+      let lastY = window.innerHeight / 2;
+
+      // Mouse spotlight effect
+      document.addEventListener('mousemove', (e) => {
+        lastX = e.clientX;
+        lastY = e.clientY;
+        updateSpotlight(lastX, lastY);
+      });
+
+      // Initialize spotlight
+      updateSpotlight(lastX, lastY);
+
+      // Theme toggle function
+      window.toggleTheme = () => {
+        const html = document.documentElement;
+        const isLight = html.classList.toggle('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateSpotlight(lastX, lastY);
+      };
+    </script>
+  </body>
+</html>

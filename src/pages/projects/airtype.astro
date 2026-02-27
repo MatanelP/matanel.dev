@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+---
+
+<Layout title="AirType | Voice-to-Text Desktop App">
+  <Header />
+  
+  <main class="px-6 lg:px-12 pt-24 pb-16">
+    <article class="max-w-4xl mx-auto">
+      <!-- Hero -->
+      <header class="mb-12">
+        <a href="/#projects" class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block">
+          ← Back to Projects
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
+          AirType 🎤
+        </h1>
+        <p class="text-xl text-[var(--text-secondary)] mb-6">
+          Live voice-to-text desktop app. Press a hotkey anywhere, speak, and text appears at your cursor.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {["Rust", "Tauri", "Whisper", "TypeScript", "WebSocket"].map(tag => (
+            <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div class="flex gap-4">
+          <a 
+            href="https://github.com/MatanelP/AirType" 
+            target="_blank"
+            class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
+          >
+            View Source
+          </a>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="prose prose-invert max-w-none">
+        <div class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8">
+          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">Overview</h2>
+          <p class="text-[var(--text-secondary)] mb-0">
+            AirType is a lightweight, cross-platform desktop application that transcribes your voice to text 
+            and inserts it directly at your cursor position. Works anywhere on your computer with a simple 
+            global hotkey. 100% offline - no data sent to the cloud.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Features</h2>
+        <ul class="space-y-3 text-[var(--text-secondary)] mb-8">
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Global Hotkey Recording</strong> - Press a hotkey anywhere to start recording</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Dual Language Support</strong> - English and Hebrew (more coming soon)</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Two Modes</strong> - Batch mode (more accurate) or Live mode (real-time)</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">100% Offline</strong> - Uses Whisper locally, your voice never leaves your machine</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">System Tray</strong> - Runs quietly in the background with near-zero resource usage</span>
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Default Hotkeys</h2>
+        <div class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-8">
+          <table class="w-full text-[var(--text-secondary)] text-sm">
+            <thead>
+              <tr class="border-b border-[var(--text-secondary)]/20">
+                <th class="text-left py-2 text-[var(--text-primary)]">Hotkey</th>
+                <th class="text-left py-2 text-[var(--text-primary)]">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[var(--text-secondary)]/10">
+                <td class="py-2 mono">Ctrl+Shift+Space</td>
+                <td class="py-2">Hold to record</td>
+              </tr>
+              <tr class="border-b border-[var(--text-secondary)]/10">
+                <td class="py-2 mono">Ctrl+Shift+R</td>
+                <td class="py-2">Toggle recording on/off</td>
+              </tr>
+              <tr>
+                <td class="py-2 mono">Ctrl+Shift+L</td>
+                <td class="py-2">Toggle language (EN/HE)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Tech Stack</h2>
+        <p class="text-[var(--text-secondary)] mb-4">
+          Built with Tauri for a lightweight, native desktop experience. The Rust backend handles 
+          audio capture and Whisper integration, while the TypeScript frontend provides a clean 
+          settings interface.
+        </p>
+        <ul class="space-y-2 text-[var(--text-secondary)]">
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Tauri</strong> - Native desktop app framework</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Whisper.cpp</strong> - Local speech recognition</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">OpenAI Realtime API</strong> - Optional live mode via WebSocket</span>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </main>
+</Layout>

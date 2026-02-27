@@ -1,0 +1,103 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+---
+
+<Layout title="Choklo | Pet Care Reminder App">
+  <Header />
+  
+  <main class="px-6 lg:px-12 pt-24 pb-16">
+    <article class="max-w-4xl mx-auto">
+      <!-- Hero -->
+      <header class="mb-12">
+        <a href="/#projects" class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block">
+          ← Back to Projects
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
+          Choklo 🐕
+        </h1>
+        <p class="text-xl text-[var(--text-secondary)] mb-6">
+          Pet care and medication reminder app with a robust, testable notification system.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {["Flutter", "Dart", "Android", "iOS", "Notifications"].map(tag => (
+            <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div class="flex gap-4">
+          <a 
+            href="https://github.com/MatanelP/choklo" 
+            target="_blank"
+            class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
+          >
+            View Source
+          </a>
+          <!-- <a 
+            href="#" 
+            class="bg-[var(--accent)] text-[var(--bg-primary)] px-4 py-2 rounded hover:opacity-90 transition-opacity mono text-sm"
+          >
+            Download App
+          </a> -->
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="prose prose-invert max-w-none">
+        <div class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8">
+          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">Overview</h2>
+          <p class="text-[var(--text-secondary)] mb-0">
+            Choklo was born out of necessity - I needed a reliable way to track my dog's medication schedule. 
+            What started as a simple reminder app evolved into a full-featured pet care companion with 
+            a notification system designed for reliability above all else.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Features</h2>
+        <ul class="space-y-3 text-[var(--text-secondary)] mb-8">
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Smart Notifications</strong> - Unified scheduling with swap-able backends for testing</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Manual Snooze</strong> - Reschedule reminders with configurable duration</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Recurring Protection</strong> - Confirm/skip only dismisses current instance, never future ones</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Structured Logging</strong> - Ring-buffer logging with levels, retention, and export</span>
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Architecture</h2>
+        <p class="text-[var(--text-secondary)] mb-4">
+          The notification system is built with testability in mind. The <code class="bg-[var(--bg-secondary)] px-1 rounded">NotificationScheduler</code> 
+          abstraction allows swapping the real implementation with a fake for tests, ensuring the app's 
+          most critical functionality is thoroughly tested.
+        </p>
+        
+        <div class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-8 overflow-x-auto">
+          <pre class="text-sm text-[var(--text-secondary)] mono m-0"><code>lib/
+├── services/
+│   ├── notification_service.dart    # Lifecycle, scheduling, UI
+│   ├── notification_scheduler.dart  # Abstraction + implementations
+│   └── logging_service.dart         # Ring-buffer logging
+└── screens/
+    └── settings/log_viewer_screen.dart</code></pre>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Why I Built This</h2>
+        <p class="text-[var(--text-secondary)]">
+          My dog Choklo needs daily medication, and I kept forgetting. Every reminder app I tried either 
+          had too many features I didn't need, unreliable notifications, or wasn't designed for recurring 
+          pet care tasks. So I built exactly what I needed - nothing more, nothing less.
+        </p>
+      </section>
+    </article>
+  </main>
+</Layout>

@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+---
+
+<Layout title="NetStat | Android Network Speed Monitor">
+  <Header />
+  
+  <main class="px-6 lg:px-12 pt-24 pb-16">
+    <article class="max-w-4xl mx-auto">
+      <!-- Hero -->
+      <header class="mb-12">
+        <a href="/#projects" class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block">
+          ← Back to Projects
+        </a>
+        <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
+          NetStat 📊
+        </h1>
+        <p class="text-xl text-[var(--text-secondary)] mb-6">
+          Real-time network speed monitor for Android. Live download/upload speeds in your status bar.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {["Kotlin", "Android", "Material 3", "Foreground Service"].map(tag => (
+            <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div class="flex gap-4">
+          <a 
+            href="https://github.com/MatanelP/net-stat" 
+            target="_blank"
+            class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
+          >
+            View Source
+          </a>
+          <a 
+            href="https://github.com/MatanelP/net-stat/releases" 
+            target="_blank"
+            class="bg-[var(--accent)] text-[var(--bg-primary)] px-4 py-2 rounded hover:opacity-90 transition-opacity mono text-sm"
+          >
+            Download APK
+          </a>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="prose prose-invert max-w-none">
+        <div class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8">
+          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">Overview</h2>
+          <p class="text-[var(--text-secondary)] mb-0">
+            A modern Android app that displays real-time network speed (download/upload) in your status bar 
+            notification. Features a live speed graph and full Material You theming that matches your wallpaper.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Features</h2>
+        <ul class="space-y-3 text-[var(--text-secondary)] mb-8">
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Real-time Monitoring</strong> - Live download and upload speed in status bar</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Speed History Graph</strong> - 60-second rolling graph with toggleable lines</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Material You</strong> - Dynamic colors that match your wallpaper (Android 12+)</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Theme Modes</strong> - Light, Dark, or System default</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Customizable Icon</strong> - Units, arrow styles, colors, fonts, and more</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Start on Boot</strong> - Optionally auto-start monitoring</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span><strong class="text-[var(--text-primary)]">Battery Efficient</strong> - Lightweight foreground service</span>
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Customization Options</h2>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-4">
+            <h3 class="text-[var(--accent)] text-sm mono mb-2">Status Bar Icon</h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1">
+              <li>• Speed units (Auto, Kbps, Mbps, KB/s, MB/s)</li>
+              <li>• Icon style (Combined, Download only, Upload only)</li>
+              <li>• Arrow styles (↓↑, ▼▲, DU, or none)</li>
+              <li>• Text color options</li>
+              <li>• Font size and style</li>
+            </ul>
+          </div>
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-4">
+            <h3 class="text-[var(--accent)] text-sm mono mb-2">Behavior</h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1">
+              <li>• Show/hide unit in icon</li>
+              <li>• Minimize notification</li>
+              <li>• Start on boot toggle</li>
+              <li>• Smart zero-threshold</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Requirements</h2>
+        <ul class="space-y-2 text-[var(--text-secondary)]">
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span>Android 9.0 (API 28) or higher</span>
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span>Notification permission (Android 13+)</span>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </main>
+</Layout>
