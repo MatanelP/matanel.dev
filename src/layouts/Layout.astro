@@ -35,8 +35,8 @@ const { title, description = "Matanel Pataky - Software Engineer" } = Astro.prop
     </script>
   </head>
   <body class="antialiased">
-    <!-- Mouse spotlight effect -->
-    <div id="spotlight" class="pointer-events-none fixed inset-0 z-30"></div>
+    <!-- Mouse spotlight effect (desktop only) -->
+    <div id="spotlight" class="pointer-events-none fixed inset-0 z-30 hidden lg:block"></div>
     
     <slot />
     
@@ -44,20 +44,21 @@ const { title, description = "Matanel Pataky - Software Engineer" } = Astro.prop
       // Theme toggle
       function updateSpotlight(x: number, y: number) {
         const spotlight = document.getElementById('spotlight');
+        if (!spotlight || window.innerWidth < 1024) return;
+        
         const isLight = document.documentElement.classList.contains('light');
-        if (spotlight) {
-          const color = isLight ? 'rgba(13, 148, 136, 0.08)' : 'rgba(100, 255, 218, 0.15)';
-          const mid = isLight ? 'rgba(13, 148, 136, 0.04)' : 'rgba(100, 255, 218, 0.08)';
-          const outer = isLight ? 'rgba(13, 148, 136, 0.02)' : 'rgba(100, 255, 218, 0.03)';
-          spotlight.style.background = `radial-gradient(125px at ${x}px ${y}px, ${color}, ${mid} 40%, ${outer} 60%, transparent)`;
-        }
+        const color = isLight ? 'rgba(13, 148, 136, 0.08)' : 'rgba(100, 255, 218, 0.15)';
+        const mid = isLight ? 'rgba(13, 148, 136, 0.04)' : 'rgba(100, 255, 218, 0.08)';
+        const outer = isLight ? 'rgba(13, 148, 136, 0.02)' : 'rgba(100, 255, 218, 0.03)';
+        spotlight.style.background = `radial-gradient(125px at ${x}px ${y}px, ${color}, ${mid} 40%, ${outer} 60%, transparent)`;
       }
 
       let lastX = window.innerWidth / 2;
       let lastY = window.innerHeight / 2;
 
-      // Mouse spotlight effect
+      // Mouse spotlight effect (desktop only)
       document.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 1024) return;
         lastX = e.clientX;
         lastY = e.clientY;
         updateSpotlight(lastX, lastY);
