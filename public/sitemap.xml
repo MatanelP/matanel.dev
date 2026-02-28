@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://matanel.dev/</loc>
+    <lastmod>2026-02-28</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://matanel.dev/projects/choklo</loc>
+    <lastmod>2026-02-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matanel.dev/projects/airtype</loc>
+    <lastmod>2026-02-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matanel.dev/projects/netstat</loc>
+    <lastmod>2026-02-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matanel.dev/projects/active</loc>
+    <lastmod>2026-02-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>

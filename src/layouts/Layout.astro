@@ -6,7 +6,8 @@ interface Props {
   description?: string
 }
 
-const { title, description = "Matanel Pataky - Software Engineer" } = Astro.props
+const { title, description = "Matanel Pataky - Software Engineer specializing in Rust, embedded systems, and backend development. Based in Israel." } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, 'https://matanel.dev')
 ---
 
 <!doctype html>
@@ -15,6 +16,47 @@ const { title, description = "Matanel Pataky - Software Engineer" } = Astro.prop
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content="Matanel Pataky" />
+    <meta name="keywords" content="Matanel Pataky, Software Engineer, Rust Developer, Embedded Systems, Backend Developer, Israel, Flutter, TypeScript" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Matanel Pataky" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Matanel Pataky",
+      "url": "https://matanel.dev",
+      "jobTitle": "Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "HARMAN"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Hebrew University of Jerusalem"
+      },
+      "sameAs": [
+        "https://github.com/MatanelP",
+        "https://linkedin.com/in/matanel-pataky-546b97217"
+      ],
+      "knowsAbout": ["Rust", "Embedded Systems", "Flutter", "Backend Development", "TypeScript"]
+    }
+    </script>
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
