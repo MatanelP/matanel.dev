@@ -1,13 +1,16 @@
 ---
-import '../styles/global.css'
+import "../styles/global.css";
 
 interface Props {
-  title: string
-  description?: string
+  title: string;
+  description?: string;
 }
 
-const { title, description = "Matanel Pataky - Software Engineer specializing in Rust, embedded systems, and backend development. Based in Israel." } = Astro.props
-const canonicalURL = new URL(Astro.url.pathname, 'https://matanel.dev')
+const {
+  title,
+  description = "Matanel Pataky - Software Engineer specializing in Rust, embedded systems, and backend development. Based in Israel.",
+} = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, "https://matanel.dev");
 ---
 
 <!doctype html>
@@ -17,9 +20,12 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://matanel.dev')
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Matanel Pataky" />
-    <meta name="keywords" content="Matanel Pataky, Software Engineer, Rust Developer, Embedded Systems, Backend Developer, Israel, Flutter, TypeScript" />
+    <meta
+      name="keywords"
+      content="Matanel Pataky, Software Engineer, Rust Developer, Embedded Systems, Backend Developer, Israel, Flutter, TypeScript"
+    />
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
@@ -27,83 +33,209 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://matanel.dev')
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Matanel Pataky" />
     <meta property="og:locale" content="en_US" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Matanel Pataky",
-      "url": "https://matanel.dev",
-      "jobTitle": "Software Engineer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "HARMAN"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Hebrew University of Jerusalem"
-      },
-      "sameAs": [
-        "https://github.com/MatanelP",
-        "https://linkedin.com/in/matanel-pataky-546b97217"
-      ],
-      "knowsAbout": ["Rust", "Embedded Systems", "Flutter", "Backend Development", "TypeScript"]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Matanel Pataky",
+        "url": "https://matanel.dev",
+        "jobTitle": "Software Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "HARMAN"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Hebrew University of Jerusalem"
+        },
+        "sameAs": [
+          "https://github.com/MatanelP",
+          "https://linkedin.com/in/matanel-pataky-546b97217"
+        ],
+        "knowsAbout": [
+          "Rust",
+          "Embedded Systems",
+          "Flutter",
+          "Backend Development",
+          "TypeScript"
+        ]
+      }
     </script>
-    
+
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+      const darkTheme = {
+        primaryColor: "#233554",
+        primaryTextColor: "#ccd6f6",
+        primaryBorderColor: "#64ffda",
+        lineColor: "#64ffda",
+        secondaryColor: "#112240",
+        tertiaryColor: "#0a192f",
+        background: "transparent",
+        mainBkg: "#233554",
+        nodeBorder: "#64ffda",
+        clusterBkg: "#112240",
+        clusterBorder: "#64ffda",
+        edgeLabelBackground: "#112240",
+        textColor: "#ccd6f6",
+        fontSize: "14px",
+      };
+
+      const lightTheme = {
+        primaryColor: "#c4c4c4",
+        primaryTextColor: "#1e293b",
+        primaryBorderColor: "#0d9488",
+        lineColor: "#0d9488",
+        secondaryColor: "#d4d4d4",
+        tertiaryColor: "#e8e8e8",
+        background: "transparent",
+        mainBkg: "#c4c4c4",
+        nodeBorder: "#0d9488",
+        clusterBkg: "#d4d4d4",
+        clusterBorder: "#0d9488",
+        edgeLabelBackground: "#d4d4d4",
+        textColor: "#1e293b",
+        fontSize: "14px",
+      };
+
+      function initMermaid() {
+        const light = document.documentElement.classList.contains("light");
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: "base",
+          themeVariables: light ? lightTheme : darkTheme,
+        });
+      }
+
+      initMermaid();
+
+      // Store original mermaid source before mermaid.run() replaces it with SVG
+      document.querySelectorAll(".mermaid").forEach((el) => {
+        if (!el.getAttribute("data-original-code")) {
+          el.setAttribute("data-original-code", el.textContent || "");
+        }
+      });
+
+      await mermaid.run();
+
+      // Reveal rendered diagrams
+      document.querySelectorAll(".mermaid").forEach((el) => {
+        el.style.visibility = "visible";
+        el.style.height = "";
+        el.style.overflow = "";
+      });
+
+      window.rerenderMermaid = async () => {
+        // Reset mermaid elements so they can be re-processed
+        document.querySelectorAll(".mermaid").forEach((el) => {
+          const code = el.getAttribute("data-original-code");
+          if (code) {
+            el.removeAttribute("data-processed");
+            el.innerHTML = code;
+          }
+        });
+        initMermaid();
+        await mermaid.run();
+        // Reveal after re-render
+        document.querySelectorAll(".mermaid").forEach((el) => {
+          el.style.visibility = "visible";
+          el.style.height = "";
+          el.style.overflow = "";
+        });
+      };
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script defer src="https://analytics.matanel.dev/script.js" data-website-id="47d5cd17-d81c-4abf-9b83-987ed25c9406"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://analytics.matanel.dev/script.js"
+      data-website-id="47d5cd17-d81c-4abf-9b83-987ed25c9406"></script>
     <title>{title}</title>
     <style>
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
       }
-      code, pre, .mono {
-        font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+      code,
+      pre,
+      .mono {
+        font-family: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
       }
     </style>
     <script is:inline>
       // Prevent flash - check theme before page renders
-      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-      if (theme === 'light') document.documentElement.classList.add('light');
+      const theme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark");
+      if (theme === "light") document.documentElement.classList.add("light");
     </script>
   </head>
   <body class="antialiased">
     <!-- Mouse spotlight effect (desktop only) -->
-    <div id="spotlight" class="pointer-events-none fixed inset-0 z-30 hidden lg:block"></div>
-    
+    <div
+      id="spotlight"
+      class="pointer-events-none fixed inset-0 z-30 hidden lg:block"
+    >
+    </div>
+
     <!-- Back to top button -->
-    <button 
-      id="back-to-top" 
+    <button
+      id="back-to-top"
       class="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-[var(--accent)] text-[var(--bg-primary)] opacity-0 invisible transition-all duration-300 hover:scale-110 shadow-lg"
       aria-label="Back to top"
     >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
       </svg>
     </button>
-    
+
     <slot />
-    
+
     <script>
       // Theme toggle
       function updateSpotlight(x: number, y: number) {
-        const spotlight = document.getElementById('spotlight');
+        const spotlight = document.getElementById("spotlight");
         if (!spotlight || window.innerWidth < 1024) return;
-        
-        const isLight = document.documentElement.classList.contains('light');
-        const color = isLight ? 'rgba(13, 148, 136, 0.08)' : 'rgba(100, 255, 218, 0.15)';
-        const mid = isLight ? 'rgba(13, 148, 136, 0.04)' : 'rgba(100, 255, 218, 0.08)';
-        const outer = isLight ? 'rgba(13, 148, 136, 0.02)' : 'rgba(100, 255, 218, 0.03)';
+
+        const isLight = document.documentElement.classList.contains("light");
+        const color = isLight
+          ? "rgba(13, 148, 136, 0.08)"
+          : "rgba(100, 255, 218, 0.15)";
+        const mid = isLight
+          ? "rgba(13, 148, 136, 0.04)"
+          : "rgba(100, 255, 218, 0.08)";
+        const outer = isLight
+          ? "rgba(13, 148, 136, 0.02)"
+          : "rgba(100, 255, 218, 0.03)";
         spotlight.style.background = `radial-gradient(125px at ${x}px ${y}px, ${color}, ${mid} 40%, ${outer} 60%, transparent)`;
       }
 
@@ -111,7 +243,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://matanel.dev')
       let lastY = window.innerHeight / 2;
 
       // Mouse spotlight effect (desktop only)
-      document.addEventListener('mousemove', (e) => {
+      document.addEventListener("mousemove", (e) => {
         if (window.innerWidth < 1024) return;
         lastX = e.clientX;
         lastY = e.clientY;
@@ -124,26 +256,28 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://matanel.dev')
       // Theme toggle function
       window.toggleTheme = () => {
         const html = document.documentElement;
-        const isLight = html.classList.toggle('light');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        const isLight = html.classList.toggle("light");
+        localStorage.setItem("theme", isLight ? "light" : "dark");
         updateSpotlight(lastX, lastY);
+        // Re-render mermaid diagrams with the new theme
+        if (window.rerenderMermaid) window.rerenderMermaid();
       };
 
       // Back to top button
-      const backToTop = document.getElementById('back-to-top');
-      
-      window.addEventListener('scroll', () => {
+      const backToTop = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
-          backToTop?.classList.remove('opacity-0', 'invisible');
-          backToTop?.classList.add('opacity-100', 'visible');
+          backToTop?.classList.remove("opacity-0", "invisible");
+          backToTop?.classList.add("opacity-100", "visible");
         } else {
-          backToTop?.classList.add('opacity-0', 'invisible');
-          backToTop?.classList.remove('opacity-100', 'visible');
+          backToTop?.classList.add("opacity-0", "invisible");
+          backToTop?.classList.remove("opacity-100", "visible");
         }
       });
 
-      backToTop?.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      backToTop?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     </script>
   </body>

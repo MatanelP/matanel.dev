@@ -1,102 +1,252 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
 ---
 
-<Layout title="Choklo | Pet Care Reminder App">
+<Layout title="Choklo | Pet Health Companion">
   <Header />
-  
+
   <main class="px-6 lg:px-12 pt-24 pb-16">
     <article class="max-w-4xl mx-auto">
       <!-- Hero -->
       <header class="mb-12">
-        <a href="/#projects" class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block">
+        <a
+          href="/#projects"
+          class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block"
+        >
           ← Back to Projects
         </a>
-        <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
-          Choklo 🐕
-        </h1>
+        <div class="flex items-center gap-4 mb-4">
+          <img
+            src="/images/projects/choklo-icon.png"
+            alt="Choklo icon"
+            class="w-16 h-16 rounded-2xl"
+          />
+          <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)]">
+            Choklo
+          </h1>
+        </div>
         <p class="text-xl text-[var(--text-secondary)] mb-6">
-          Pet care and medication reminder app with a robust, testable notification system.
+          Your pet's personal health assistant - because they can't set their
+          own alarms.
         </p>
         <div class="flex flex-wrap gap-2 mb-6">
-          {["Flutter", "Dart", "Android", "iOS", "Notifications"].map(tag => (
-            <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
-              {tag}
-            </span>
-          ))}
+          {
+            ["Flutter", "Firebase", "Riverpod", "Android", "iOS"].map((tag) => (
+              <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
+                {tag}
+              </span>
+            ))
+          }
         </div>
         <div class="flex gap-4">
-          <a 
-            href="https://github.com/MatanelP/choklo" 
+          <a
+            href="https://github.com/MatanelP/choklo"
             target="_blank"
             class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
           >
             View Source
           </a>
-          <!-- <a 
-            href="#" 
-            class="bg-[var(--accent)] text-[var(--bg-primary)] px-4 py-2 rounded hover:opacity-90 transition-opacity mono text-sm"
-          >
-            Download App
-          </a> -->
+        </div>
+
+        <div class="mt-6 text-[var(--text-secondary)] text-sm">
+          <span class="text-[var(--accent)] mono">Status:</span> In active development
+          · App Store release TBD
         </div>
       </header>
 
       <!-- Content -->
       <section class="prose prose-invert max-w-none">
         <div class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8">
-          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">Overview</h2>
+          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">
+            The Story
+          </h2>
           <p class="text-[var(--text-secondary)] mb-0">
-            Choklo was born out of necessity - I needed a reliable way to track my dog's medication schedule. 
-            What started as a simple reminder app evolved into a full-featured pet care companion with 
-            a notification system designed for reliability above all else.
+            My cat Choklo has hypertrophic cardiomyopathy (HCM) - a heart
+            condition that requires daily medication and careful monitoring. I
+            needed an app that could track his breathing rate over time
+            (critical for detecting fluid buildup), generate graphs I could show
+            his vet, share care duties with family members, and yes - remind me
+            to give him his pills without fail. Nothing I found did all of that
+            well, so I built it.
           </p>
         </div>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Features</h2>
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          What It Does
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">🫁</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Breathing Monitor
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Track respiratory rate - critical for pets with heart conditions.
+              Count manually, tap along with breaths, or let the microphone
+              detect breathing patterns automatically. Historical graphs show
+              trends over weeks and months.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">📊</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Vet-Ready Reports
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Generate breathing rate graphs and medication history to share
+              with your vet. No more "I think he's been breathing faster lately"
+              - show them the data.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">👨‍👩‍👧</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Shared Care
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Invite family members to share pet care. Everyone sees the same
+              medication schedule, breathing logs, and gets notified. No more
+              "did you give him his pill?" texts.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">💊</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Bulletproof Reminders
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Notifications that won't let you forget. Auto-snooze keeps buzzing
+              until you confirm the dose. Survives app kills, phone restarts,
+              and aggressive battery optimizers.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">📦</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Medication Inventory
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Visual pill tracker shows remaining doses at a glance. Get
+              low-stock alerts before you run out, so you're never caught
+              scrambling for a refill.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">🐾</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Multi-Pet Management
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Swipe between pets with detailed profiles: age, weight, species,
+              breed, medical notes, and photos. Each pet gets their own
+              medication schedule and health tracking.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Why The Notifications Actually Work
+        </h2>
+        <p class="text-[var(--text-secondary)] mb-4">
+          Most reminder apps fail when Android's battery optimizations kill them
+          in the background. Choklo uses native Android BroadcastReceivers and
+          AlarmManager to fire notifications at the OS level - the app doesn't
+          even need to be running. Missed a notification? It auto-snoozes and
+          tries again until you actively confirm or skip.
+        </p>
+
+        <div
+          class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8 overflow-x-auto flex justify-center [&_svg]:!max-w-full [&_svg]:h-auto [&_svg]:w-full"
+        >
+          <pre
+            class="mermaid bg-transparent w-full">
+flowchart LR
+    subgraph OS[Android OS Layer]
+        A[AlarmManager]
+    end
+    
+    subgraph APP[Choklo App]
+        B[BroadcastReceiver]
+        C[Notification]
+    end
+    
+    subgraph USER[User Response]
+        D[Full-screen Alert]
+        E[Confirmed]
+        F[Ignored]
+    end
+    
+    A -- triggers --> B
+    B -- builds --> C
+    C -- displays --> D
+    D -- tap confirm --> E
+    D -- timeout --> F
+    F -. reschedules .-> A
+          </pre>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Tech Highlights
+        </h2>
         <ul class="space-y-3 text-[var(--text-secondary)] mb-8">
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Smart Notifications</strong> - Unified scheduling with swap-able backends for testing</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Flutter + Riverpod</strong
+              > - Clean architecture with reactive state management</span
+            >
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Manual Snooze</strong> - Reschedule reminders with configurable duration</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Firebase Backend</strong
+              > - Auth, Firestore, Cloud Storage for cross-device sync</span
+            >
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Recurring Protection</strong> - Confirm/skip only dismisses current instance, never future ones</span>
+            <span
+              ><strong class="text-[var(--text-primary)]">Native Kotlin</strong> -
+              Custom BroadcastReceivers for reliable notifications</span
+            >
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Structured Logging</strong> - Ring-buffer logging with levels, retention, and export</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Audio Processing</strong
+              > - Microphone-based breathing detection with trend charts</span
+            >
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Testable Architecture</strong
+              > - Swappable notification scheduler for unit testing</span
+            >
           </li>
         </ul>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Architecture</h2>
-        <p class="text-[var(--text-secondary)] mb-4">
-          The notification system is built with testability in mind. The <code class="bg-[var(--bg-secondary)] px-1 rounded">NotificationScheduler</code> 
-          abstraction allows swapping the real implementation with a fake for tests, ensuring the app's 
-          most critical functionality is thoroughly tested.
-        </p>
-        
-        <div class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-8 overflow-x-auto">
-          <pre class="text-sm text-[var(--text-secondary)] mono m-0"><code>lib/
-├── services/
-│   ├── notification_service.dart    # Lifecycle, scheduling, UI
-│   ├── notification_scheduler.dart  # Abstraction + implementations
-│   └── logging_service.dart         # Ring-buffer logging
-└── screens/
-    └── settings/log_viewer_screen.dart</code></pre>
+        <div
+          class="bg-[var(--accent-tint)] border border-[var(--accent)]/30 rounded-lg p-5"
+        >
+          <p class="text-[var(--text-secondary)] mb-0 text-sm">
+            <strong class="text-[var(--accent)]"
+              >Named after the patient:</strong
+            > Choklo is my cat. This app exists because his health depends on consistent
+            care - and now our whole family can help keep track.
+          </p>
         </div>
-
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Why I Built This</h2>
-        <p class="text-[var(--text-secondary)]">
-          My dog Choklo needs daily medication, and I kept forgetting. Every reminder app I tried either 
-          had too many features I didn't need, unreliable notifications, or wasn't designed for recurring 
-          pet care tasks. So I built exactly what I needed - nothing more, nothing less.
-        </p>
       </section>
     </article>
   </main>

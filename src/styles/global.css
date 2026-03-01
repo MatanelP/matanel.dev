@@ -107,3 +107,11 @@ pre {
 :root.light .moon-icon {
   display: block;
 }
+
+/* Mermaid diagrams - themed via JS in Layout.astro */
+/* Hide raw mermaid source until rendered */
+.mermaid:not([data-processed]) {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}

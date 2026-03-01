@@ -1,125 +1,238 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
 ---
 
 <Layout title="NetStat | Android Network Speed Monitor">
   <Header />
-  
+
   <main class="px-6 lg:px-12 pt-24 pb-16">
     <article class="max-w-4xl mx-auto">
       <!-- Hero -->
       <header class="mb-12">
-        <a href="/#projects" class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block">
+        <a
+          href="/#projects"
+          class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block"
+        >
           ← Back to Projects
         </a>
-        <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
-          NetStat 📊
-        </h1>
+        <div class="flex items-center gap-4 mb-4">
+          <img
+            src="/images/projects/netstat-icon.png"
+            alt="NetStat icon"
+            class="w-16 h-16 rounded-2xl"
+          />
+          <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)]">
+            NetStat
+          </h1>
+        </div>
         <p class="text-xl text-[var(--text-secondary)] mb-6">
-          Real-time network speed monitor for Android. Live download/upload speeds in your status bar.
+          Real-time network speed in your Android status bar - beautifully
+          designed, endlessly customizable.
         </p>
         <div class="flex flex-wrap gap-2 mb-6">
-          {["Kotlin", "Android", "Material 3", "Foreground Service"].map(tag => (
-            <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
-              {tag}
-            </span>
-          ))}
+          {
+            ["Kotlin", "Android", "Material 3", "Custom Canvas"].map((tag) => (
+              <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
+                {tag}
+              </span>
+            ))
+          }
         </div>
         <div class="flex gap-4">
-          <a 
-            href="https://github.com/MatanelP/net-stat" 
+          <a
+            href="https://play.google.com/store/apps/details?id=com.netstat.speedmonitor"
+            target="_blank"
+            class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
+          >
+            Google Play
+          </a>
+          <a
+            href="https://github.com/MatanelP/net-stat"
             target="_blank"
             class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
           >
             View Source
           </a>
-          <a 
-            href="https://github.com/MatanelP/net-stat/releases" 
-            target="_blank"
-            class="bg-[var(--accent)] text-[var(--bg-primary)] px-4 py-2 rounded hover:opacity-90 transition-opacity mono text-sm"
-          >
-            Download APK
-          </a>
+        </div>
+
+        <div class="mt-6 text-[var(--text-secondary)] text-sm">
+          <span class="text-[var(--accent)] mono">Status:</span> v1.3.0 · Live on
+          Google Play
         </div>
       </header>
 
       <!-- Content -->
       <section class="prose prose-invert max-w-none">
         <div class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8">
-          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">Overview</h2>
+          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">
+            At a Glance
+          </h2>
           <p class="text-[var(--text-secondary)] mb-0">
-            A modern Android app that displays real-time network speed (download/upload) in your status bar 
-            notification. Features a live speed graph and full Material You theming that matches your wallpaper.
+            Know your network speed without opening an app. NetStat shows live
+            download and upload speeds right in your status bar notification,
+            with a beautiful animated graph and full Material You theming.
+            Designed for people who want to actually <em>see</em> their connection.
           </p>
         </div>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Features</h2>
-        <ul class="space-y-3 text-[var(--text-secondary)] mb-8">
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Real-time Monitoring</strong> - Live download and upload speed in status bar</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Speed History Graph</strong> - 60-second rolling graph with toggleable lines</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Material You</strong> - Dynamic colors that match your wallpaper (Android 12+)</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Theme Modes</strong> - Light, Dark, or System default</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Customizable Icon</strong> - Units, arrow styles, colors, fonts, and more</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Start on Boot</strong> - Optionally auto-start monitoring</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Battery Efficient</strong> - Lightweight foreground service</span>
-          </li>
-        </ul>
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Features
+        </h2>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Customization Options</h2>
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">📊</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Live Status Bar Icon
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Not just a static notification - the icon dynamically updates with
+              your actual current speed. Glance at your status bar and know
+              instantly.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">📈</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Speed History Graph
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Smooth 60-second rolling graph with Bézier curves and gradient
+              fills. Toggle download/upload lines. Watch your connection in
+              real-time.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">🎨</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Material You Theming
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Dynamic colors that adapt to your wallpaper (Android 12+). Light,
+              dark, or system-follow modes. It looks like it belongs on your
+              phone.
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <div class="text-3xl mb-3">⚙️</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              Endless Customization
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Units, arrow styles, colors, fonts, icon modes - tweak everything
+              until it's exactly how you want it.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Customization Options
+        </h2>
         <div class="grid md:grid-cols-2 gap-4 mb-8">
           <div class="bg-[var(--bg-secondary)] rounded-lg p-4">
-            <h3 class="text-[var(--accent)] text-sm mono mb-2">Status Bar Icon</h3>
-            <ul class="text-[var(--text-secondary)] text-sm space-y-1">
+            <h3 class="text-[var(--accent)] mono text-sm mb-2">
+              Status Bar Icon
+            </h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1 mb-0">
               <li>• Speed units (Auto, Kbps, Mbps, KB/s, MB/s)</li>
               <li>• Icon style (Combined, Download only, Upload only)</li>
               <li>• Arrow styles (↓↑, ▼▲, DU, or none)</li>
-              <li>• Text color options</li>
-              <li>• Font size and style</li>
+              <li>• 7 text color options</li>
+              <li>• Font size and style (Normal/Bold/Italic)</li>
+              <li>• Show/hide unit in icon</li>
             </ul>
           </div>
           <div class="bg-[var(--bg-secondary)] rounded-lg p-4">
-            <h3 class="text-[var(--accent)] text-sm mono mb-2">Behavior</h3>
-            <ul class="text-[var(--text-secondary)] text-sm space-y-1">
-              <li>• Show/hide unit in icon</li>
-              <li>• Minimize notification</li>
+            <h3 class="text-[var(--accent)] mono text-sm mb-2">Behavior</h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1 mb-0">
               <li>• Start on boot toggle</li>
-              <li>• Smart zero-threshold</li>
+              <li>• Minimize notification option</li>
+              <li>• Smart zero-threshold (no flickering)</li>
+              <li>• Battery-efficient 750ms updates</li>
+              <li>• Theme mode (Light/Dark/System)</li>
             </ul>
           </div>
         </div>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Requirements</h2>
-        <ul class="space-y-2 text-[var(--text-secondary)]">
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Technical Highlights
+        </h2>
+        <ul class="space-y-3 text-[var(--text-secondary)] mb-8">
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span>Android 9.0 (API 28) or higher</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Custom Canvas Drawing</strong
+              > - SpeedGraphView with Bézier curves, gradient fills, and smooth animation
+              interpolators</span
+            >
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Foreground Service</strong
+              > - Battery-efficient monitoring with proper notification channels</span
+            >
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Dynamic Icon Generation</strong
+              > - Real-time bitmap creation for notification with configurable text
+              rendering</span
+            >
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span
+              ><strong class="text-[var(--text-primary)]"
+                >Flicker Prevention</strong
+              > - Smart algorithm prevents display from jumping to 0 during brief
+              pauses</span
+            >
+          </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span
+              ><strong class="text-[var(--text-primary)]">Modern Android</strong
+              > - Kotlin 2.1, Material 3, targets Android 9-16</span
+            >
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Requirements
+        </h2>
+        <ul class="space-y-2 text-[var(--text-secondary)] mb-8">
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span>Android 9.0 (Pie) or higher</span>
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
             <span>Notification permission (Android 13+)</span>
           </li>
+          <li class="flex">
+            <span class="text-[var(--accent)] mr-3">▸</span>
+            <span>No other permissions needed - privacy first</span>
+          </li>
         </ul>
+
+        <div
+          class="bg-[var(--accent-tint)] border border-[var(--accent)]/30 rounded-lg p-5"
+        >
+          <p class="text-[var(--text-secondary)] mb-0 text-sm">
+            <strong class="text-[var(--accent)]">Privacy:</strong> Zero data collection,
+            no analytics, no ads. The app only reads network statistics that Android
+            provides to any app. Your usage data stays on your device.
+          </p>
+        </div>
       </section>
     </article>
   </main>

@@ -1,42 +1,49 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Header from '../components/Header.astro'
-import ProjectCard from '../components/ProjectCard.astro'
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
 
 const projects = [
   {
     title: "Choklo",
-    description: "Pet care and medication reminder app with robust notification system, auto-snooze, and structured logging. Built for reliability.",
+    description:
+      "Your pet's personal health assistant - medication reminders that actually work, breathing rate monitoring (even using your phone's microphone), and multi-pet management. Because they can't set their own alarms.",
     href: "/projects/choklo",
-    tags: ["Flutter", "Dart", "Android", "iOS"],
+    tags: ["Flutter", "Firebase", "Android", "iOS"],
+    icon: "/images/projects/choklo-icon.png",
     github: "https://github.com/MatanelP/choklo",
-    featured: true
+    featured: true,
   },
   {
     title: "AirType",
-    description: "Cross-platform voice-to-text desktop app. Global hotkeys, dual language support (EN/HE), 100% offline using local Whisper.",
+    description:
+      "Turn your voice into text anywhere on your computer with a single hotkey. Works offline with local Whisper AI, supports English and Hebrew, and lives quietly in your system tray until you need it.",
     href: "/projects/airtype",
-    tags: ["Rust", "Tauri", "Whisper", "WebSocket"],
+    tags: ["Rust", "Tauri", "Whisper AI"],
+    icon: "/images/projects/airtype-icon.png",
     github: "https://github.com/MatanelP/AirType",
-    featured: true
+    featured: true,
+  },
+  {
+    title: "ActiveEnv",
+    description:
+      "Edit your Flutter apps from the couch using voice commands. Spot a bug on your phone, hold a button, describe the fix, and watch it hot-reload instantly. Brings your own AI agent (Aider, Copilot, Claude).",
+    href: "/projects/active",
+    tags: ["Flutter", "Rust", "Whisper AI"],
+    icon: "/images/projects/activeenv-icon.png",
+    github: "https://github.com/MatanelP/active",
+    featured: true,
   },
   {
     title: "NetStat",
-    description: "Android network speed monitor with real-time status bar display, live speed graphs, and Material You theming.",
+    description:
+      "Real-time network speed right in your Android status bar - beautifully designed with a live graph, Material You theming, and endless customization. Know your connection at a glance.",
     href: "/projects/netstat",
     tags: ["Kotlin", "Android", "Material 3"],
+    icon: "/images/projects/netstat-icon.png",
     github: "https://github.com/MatanelP/net-stat",
-    featured: true
+    featured: true,
   },
-  {
-    title: "Active",
-    description: "SDK and CLI for seamless integration. Flutter app with Rust-powered SDK for high-performance operations.",
-    href: "/projects/active",
-    tags: ["Flutter", "Rust", "SDK", "CLI"],
-    github: "https://github.com/MatanelP/active",
-    featured: false
-  }
-]
+];
 
 const experience = [
   {
@@ -44,20 +51,20 @@ const experience = [
     company: "HARMAN",
     range: "Mar 2023 - Present",
     points: [
-      "Led development of the Onboard Orchestrator (Rust) - central engine for SDV software deployment across vehicle ECUs",
+      "Led development of the Onboard Orchestrator (Rust) - central engine for Software-Defined Vehicle (SDV) software deployment",
       "Architected Vehicle Twin Manager - real-time vehicle data streaming with MQTT and VSS",
       "Built production OTA client (C/C++) deployed across Android, Linux, and QNX platforms",
-      "Designed Multi-Step Rule Engine for complex OTA flows with conditional logic",
-      "Created CI/CD tooling including nightly dashboards and VS Code extensions"
-    ]
+      "Designed multiservice testing framework with Python, enabling comprehensive component, integration and performance testing",
+      "Created full CI/CD pipeline with GitHub Actions, including nightly reports and dashboards and VS Code extensions",
+    ],
   },
   {
     title: "Technology Consultant (Part-time)",
     company: "Private Household",
     range: "Jan 2025 - Present",
     points: [
-      "Smart home automation, security systems, and network infrastructure consulting"
-    ]
+      "Smart home automation, security systems, and network infrastructure consulting",
+    ],
   },
   {
     title: "Student Software Engineer (Part-time)",
@@ -66,52 +73,80 @@ const experience = [
     points: [
       "Contributed to Vehicle Device Manager (C/C++) - production OTA client for automotive platforms",
       "Built hardware inventory collection service with DMA compatibility",
-      "Implemented cross-platform log compression and KPI performance testing suite"
-    ]
+      "Implemented multi step rule engine, cross-platform log compression, and KPI performance testing suite",
+    ],
   },
   {
     title: "IT Consultant",
     company: "Pool Purity",
     range: "2021",
     points: [
-      "Re-architected operations system with R&D, integrating inventory management and customer orders"
-    ]
-  }
-]
+      "Re-architected operations system with R&D, integrating inventory management and customer orders",
+    ],
+  },
+];
 
 const skills = [
-  { category: "Languages", items: ["Rust", "C/C++", "Python", "TypeScript", "Kotlin", "Dart"] },
-  { category: "Frameworks", items: ["Flutter", "React", "Actix", "Tauri", "Apache NiFi"] },
-  { category: "Systems", items: ["Linux", "QNX", "Android", "Docker", "Podman"] },
+  {
+    category: "Languages",
+    items: ["Rust", "C/C++", "Python", "Java", "Kotlin", "Dart"],
+  },
+  {
+    category: "Frameworks",
+    items: ["Flutter", "React", "Actix", "Tauri", "Apache NiFi"],
+  },
+  {
+    category: "Systems",
+    items: ["Linux", "QNX", "Android", "Docker", "Podman"],
+  },
   { category: "Protocols", items: ["MQTT", "gRPC", "Protobuf", "REST"] },
-]
+];
 ---
 
 <Layout title="Matanel Pataky | Software Engineer">
   <Header />
-  
+
   <main class="px-6 lg:px-12">
     <!-- Hero Section -->
-    <section class="min-h-[50vh] md:min-h-screen flex flex-col justify-end md:justify-center max-w-4xl mx-auto pt-24 pb-16 md:pt-20 md:pb-0">
-      <p class="text-[var(--accent)] mono mb-5 text-base md:text-lg">Hi, my name is</p>
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)] mb-3">
+    <section
+      class="min-h-[50vh] md:min-h-screen flex flex-col justify-end md:justify-center max-w-4xl mx-auto pt-24 pb-16 md:pt-20 md:pb-0"
+    >
+      <p class="text-[var(--accent)] mono mb-5 text-base md:text-lg">
+        Hi, my name is
+      </p>
+      <h1
+        class="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--text-primary)] mb-3"
+      >
         Matanel Pataky.
       </h1>
-      <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--text-secondary)] mb-8">
+      <h2
+        class="text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--text-secondary)] mb-8"
+      >
         I solve problems with code.
       </h2>
       <p class="text-[var(--text-secondary)] max-w-xl text-xl mb-12">
-        I'm a software engineer who loves technology and turning complex problems into clean, reliable solutions. 
-        From embedded systems to backend services to mobile apps, I build tools that make life easier.
+        I'm a software engineer who loves technology and turning complex
+        problems into clean, reliable solutions. From embedded systems to
+        backend services to mobile apps, I build tools that make life easier.
       </p>
       <div class="flex gap-4">
-        <a 
-          href="/matanel-pataky-cv.pdf" 
+        <a
+          href="/matanel-pataky-cv.pdf"
           download
           class="border border-[var(--accent)] text-[var(--accent)] px-7 py-4 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-base inline-flex items-center gap-2"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+            ></path>
           </svg>
           Download CV
         </a>
@@ -120,42 +155,56 @@ const skills = [
 
     <!-- About Section -->
     <section id="about" class="py-24 max-w-3xl mx-auto">
-      <h2 class="flex items-center text-3xl font-bold text-[var(--text-primary)] mb-10">
+      <h2
+        class="flex items-center text-3xl font-bold text-[var(--text-primary)] mb-10"
+      >
         About Me
-        <span class="ml-4 h-px bg-[var(--text-secondary)]/30 flex-grow max-w-xs"></span>
+        <span class="ml-4 h-px bg-[var(--text-secondary)]/30 flex-grow max-w-xs"
+        ></span>
       </h2>
-      
+
       <div class="space-y-5 text-[var(--text-secondary)] text-lg">
         <p>
-          I'm a software engineer who builds tools that make developers' lives easier and systems that 
-          just work. My foundation in the field began with a B.Sc. in Computer Science from the 
-          <span class="text-[var(--text-primary)]">Hebrew University of Jerusalem</span>.
+          I'm a software engineer who builds tools that make developers' lives
+          easier and systems that just work. My foundation in the field began
+          with a B.Sc. in Computer Science from the
+          <span class="text-[var(--text-primary)]"
+            >Hebrew University of Jerusalem</span
+          >.
         </p>
         <p>
-          I care deeply about the craft: clean code, solid architecture, and automation. Whether I'm 
-          using Rust, Flutter, or TypeScript, I focus on picking the right tool for the job to build 
-          solutions that are maintainable and reliable.
+          I care deeply about the craft: clean code, solid architecture, and
+          automation. Whether I'm using Rust, Flutter, Java or TypeScript, I
+          focus on picking the right tool for the job to build solutions that
+          are maintainable and reliable.
         </p>
         <p>
-          That mindset extends to my personal projects, too - whether it's an app to remind me to give 
-          my cat his medication or a tool that lets me redesign an entire mobile app from my couch.
+          That mindset extends to my personal projects, too - whether it's an
+          app to remind me to give my cat his medication or a custom AI tool
+          that lets me redesign an entire mobile app from my couch.
         </p>
-        
+
         <div class="pt-6">
-          <p class="text-[var(--text-primary)] mb-4 text-lg">Technologies I've been working with:</p>
+          <p class="text-[var(--text-primary)] mb-4 text-lg">
+            Technologies I've been working with:
+          </p>
           <div class="grid grid-cols-2 gap-4 group/skills">
-            {skills.map(skill => (
-              <div class="group/skill transition-all lg:group-hover/skills:opacity-50 lg:hover:!opacity-100">
-                <h4 class="text-[var(--accent)] text-base mono mb-2">{skill.category}</h4>
-                <ul class="text-base space-y-1">
-                  {skill.items.map(item => (
-                    <li class="flex items-center">
-                      <span class="text-[var(--accent)] mr-2">▸</span> {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {
+              skills.map((skill) => (
+                <div class="group/skill transition-all lg:group-hover/skills:opacity-50 lg:hover:!opacity-100">
+                  <h4 class="text-[var(--accent)] text-base mono mb-2">
+                    {skill.category}
+                  </h4>
+                  <ul class="text-base space-y-1">
+                    {skill.items.map((item) => (
+                      <li class="flex items-center">
+                        <span class="text-[var(--accent)] mr-2">▸</span> {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -163,97 +212,135 @@ const skills = [
 
     <!-- Projects Section -->
     <section id="projects" class="py-24 max-w-3xl mx-auto">
-      <h2 class="flex items-center text-3xl font-bold text-[var(--text-primary)] mb-12">
+      <h2
+        class="flex items-center text-3xl font-bold text-[var(--text-primary)] mb-12"
+      >
         Projects
-        <span class="ml-4 h-px bg-[var(--text-secondary)]/30 flex-grow max-w-xs"></span>
+        <span class="ml-4 h-px bg-[var(--text-secondary)]/30 flex-grow max-w-xs"
+        ></span>
       </h2>
-      
+
       <ul class="group/list space-y-4">
-        {projects.map(project => (
-          <li class="group relative">
-            <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-[var(--bg-secondary)]/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-            <div class="relative z-10 flex flex-col gap-3 p-4 lg:p-6 transition-all lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
-              <div class="flex items-center gap-4">
-                <h3 class="text-[var(--text-primary)] text-xl font-semibold leading-tight">
-                  <a 
-                    href={project.href} 
-                    class="group/link hover:text-[var(--accent)] transition-colors inline-flex items-baseline"
-                  >
-                    <span>{project.title}</span>
-                    <svg class="w-5 h-5 ml-1 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path>
-                    </svg>
-                  </a>
-                </h3>
-                {project.github && (
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                  </a>
+        {
+          projects.map((project) => (
+            <li class="group relative">
+              <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-[var(--bg-secondary)]/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+              <div class="relative z-10 flex flex-col gap-3 p-4 lg:p-6 transition-all lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
+                <div class="flex items-center gap-4">
+                  {project.icon && (
+                    <img
+                      src={project.icon}
+                      alt={project.title + " icon"}
+                      class="w-10 h-10 rounded-lg shrink-0"
+                    />
+                  )}
+                  <h3 class="text-[var(--text-primary)] text-xl font-semibold leading-tight">
+                    <a
+                      href={project.href}
+                      class="group/link hover:text-[var(--accent)] transition-colors inline-flex items-baseline"
+                    >
+                      <span>{project.title}</span>
+                      <svg
+                        class="w-5 h-5 ml-1 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                  </h3>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
+                      aria-label="GitHub"
+                    >
+                      <svg
+                        class="w-6 h-6"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+                <p class="text-[var(--text-secondary)] text-base">
+                  {project.description}
+                </p>
+                {project.tags && project.tags.length > 0 && (
+                  <ul class="flex flex-wrap gap-2 mt-1">
+                    {project.tags.map((tag) => (
+                      <li class="flex items-center rounded-full bg-[var(--accent)]/10 px-3 py-1 text-sm font-medium text-[var(--accent)]">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
-              <p class="text-[var(--text-secondary)] text-base">
-                {project.description}
-              </p>
-              {project.tags && project.tags.length > 0 && (
-                <ul class="flex flex-wrap gap-2 mt-1">
-                  {project.tags.map(tag => (
-                    <li class="flex items-center rounded-full bg-[var(--accent)]/10 px-3 py-1 text-sm font-medium text-[var(--accent)]">{tag}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </li>
-        ))}
+            </li>
+          ))
+        }
       </ul>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="py-24 max-w-3xl mx-auto">
-      <h2 class="flex items-center text-3xl font-bold text-[var(--text-primary)] mb-12">
+      <h2
+        class="flex items-center text-3xl font-bold text-[var(--text-primary)] mb-12"
+      >
         Experience
-        <span class="ml-4 h-px bg-[var(--text-secondary)]/30 flex-grow max-w-xs"></span>
+        <span class="ml-4 h-px bg-[var(--text-secondary)]/30 flex-grow max-w-xs"
+        ></span>
       </h2>
-      
+
       <ol class="group/list">
-        {experience.map(job => (
-          <li class="group relative mb-12">
-            <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-[var(--bg-secondary)]/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-            <div class="relative z-10 p-4 lg:p-6 transition-all lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
-              <header class="text-[var(--text-secondary)] mono text-sm font-semibold uppercase tracking-wide mb-2">{job.range}</header>
-              <h3 class="text-xl text-[var(--text-primary)] font-medium leading-snug">
-                {job.title} <span class="text-[var(--accent)]">@ {job.company}</span>
-              </h3>
-              <ul class="mt-3 space-y-2">
-                {job.points.map(point => (
-                  <li class="flex text-[var(--text-secondary)] text-base">
-                    <span class="text-[var(--accent)] mr-3 mt-0.5">▸</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))}
+        {
+          experience.map((job) => (
+            <li class="group relative mb-12">
+              <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-[var(--bg-secondary)]/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+              <div class="relative z-10 p-4 lg:p-6 transition-all lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
+                <header class="text-[var(--text-secondary)] mono text-sm font-semibold uppercase tracking-wide mb-2">
+                  {job.range}
+                </header>
+                <h3 class="text-xl text-[var(--text-primary)] font-medium leading-snug">
+                  {job.title}{" "}
+                  <span class="text-[var(--accent)]">@ {job.company}</span>
+                </h3>
+                <ul class="mt-3 space-y-2">
+                  {job.points.map((point) => (
+                    <li class="flex text-[var(--text-secondary)] text-base">
+                      <span class="text-[var(--accent)] mr-3 mt-0.5">▸</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
       </ol>
     </section>
 
     <!-- Contact Section -->
     <section class="py-24 max-w-2xl mx-auto text-center">
-      <h2 class="text-5xl md:text-6xl font-bold text-[var(--text-primary)] mb-8">Get In Touch</h2>
+      <h2
+        class="text-5xl md:text-6xl font-bold text-[var(--text-primary)] mb-8"
+      >
+        Get In Touch
+      </h2>
       <p class="text-[var(--text-secondary)] text-lg mb-12">
-        Whether you have a question, want to collaborate, 
-        or just want to say hi - my inbox is always open.
+        Whether you have a question, want to collaborate, or just want to say hi
+        - my inbox is always open.
       </p>
-      <a 
-        href="mailto:matap95@gmail.com" 
+      <a
+        href="mailto:matap95@gmail.com"
         class="inline-block border border-[var(--accent)] text-[var(--accent)] px-10 py-5 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-lg"
       >
         Say Hello
@@ -264,8 +351,18 @@ const skills = [
   <!-- Footer -->
   <footer class="py-6 text-center">
     <p class="text-[var(--text-secondary)] text-base">
-      Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--accent)]">Astro</a> 
-      · <a href="https://github.com/MatanelP/matanel.dev" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--accent)]">Source</a>
+      Built with <a
+        href="https://astro.build"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-[var(--accent)]">Astro</a
+      >
+      · <a
+        href="https://github.com/MatanelP/matanel.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-[var(--accent)]">Source</a
+      >
     </p>
   </footer>
 </Layout>

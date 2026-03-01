@@ -1,76 +1,261 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
 ---
 
-<Layout title="Active | SDK & CLI">
+<Layout title="ActiveEnv | Voice-Driven Flutter Development">
   <Header />
-  
+
   <main class="px-6 lg:px-12 pt-24 pb-16">
     <article class="max-w-4xl mx-auto">
       <!-- Hero -->
       <header class="mb-12">
-        <a href="/#projects" class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block">
+        <a
+          href="/#projects"
+          class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block"
+        >
           ← Back to Projects
         </a>
-        <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
-          Active ⚡
-        </h1>
+        <div class="flex items-center gap-4 mb-4">
+          <img
+            src="/images/projects/activeenv-icon.png"
+            alt="ActiveEnv icon"
+            class="w-16 h-16 rounded-2xl"
+          />
+          <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)]">
+            ActiveEnv
+          </h1>
+        </div>
         <p class="text-xl text-[var(--text-secondary)] mb-6">
-          SDK and CLI for high-performance operations. Flutter frontend with Rust-powered backend.
+          Edit your Flutter apps from the couch using voice commands - no
+          keyboard required.
         </p>
         <div class="flex flex-wrap gap-2 mb-6">
-          {["Flutter", "Rust", "SDK", "CLI", "Cross-platform"].map(tag => (
-            <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
-              {tag}
-            </span>
-          ))}
+          {
+            ["Flutter", "Rust", "Whisper AI", "Hot Reload"].map((tag) => (
+              <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
+                {tag}
+              </span>
+            ))
+          }
         </div>
         <div class="flex gap-4">
-          <a 
-            href="https://github.com/MatanelP/active" 
+          <a
+            href="https://github.com/MatanelP/active"
             target="_blank"
             class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
           >
             View Source
           </a>
         </div>
+
+        <div class="mt-6 text-[var(--text-secondary)] text-sm">
+          <span class="text-[var(--accent)] mono">Status:</span> MVP complete · Public
+          release TBD
+        </div>
       </header>
 
       <!-- Content -->
       <section class="prose prose-invert max-w-none">
         <div class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8">
-          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">🚧 Under Development</h2>
+          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">
+            The Problem
+          </h2>
           <p class="text-[var(--text-secondary)] mb-0">
-            Active is currently in active development. Check back soon for updates, or watch the 
-            repository for progress.
+            Mobile development means constant context-switching: write code on
+            your laptop, build, check your phone, notice a bug, go back to
+            laptop, find the file, make the change, build again... It's
+            exhausting. What if you could just look at your phone and <em
+              >tell it</em
+            > what to fix?
           </p>
         </div>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Project Structure</h2>
-        <div class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-8 overflow-x-auto">
-          <pre class="text-sm text-[var(--text-secondary)] mono m-0"><code>active/
-├── active_cli/     # Command-line interface
-├── active_sdk/     # Rust SDK core
-├── example/        # Flutter example app
-└── Active.md       # Documentation</code></pre>
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          The "Sofa Development" Workflow
+        </h2>
+
+        <div class="grid md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-4 text-center">
+            <div class="text-3xl mb-2">👀</div>
+            <h3 class="text-[var(--text-primary)] font-semibold text-sm mb-1">
+              1. Spot
+            </h3>
+            <p class="text-[var(--text-secondary)] text-xs mb-0">
+              See something wrong while using your app
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-4 text-center">
+            <div class="text-3xl mb-2">👆</div>
+            <h3 class="text-[var(--text-primary)] font-semibold text-sm mb-1">
+              2. Hold
+            </h3>
+            <p class="text-[var(--text-secondary)] text-xs mb-0">
+              Press the floating action button
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-4 text-center">
+            <div class="text-3xl mb-2">🗣️</div>
+            <h3 class="text-[var(--text-primary)] font-semibold text-sm mb-1">
+              3. Speak
+            </h3>
+            <p class="text-[var(--text-secondary)] text-xs mb-0">
+              "Make this button green and round the corners"
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-4 text-center">
+            <div class="text-3xl mb-2">✨</div>
+            <h3 class="text-[var(--text-primary)] font-semibold text-sm mb-1">
+              4. Done
+            </h3>
+            <p class="text-[var(--text-secondary)] text-xs mb-0">
+              Code updates, hot-reloads instantly
+            </p>
+          </div>
         </div>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Tech Stack</h2>
-        <ul class="space-y-2 text-[var(--text-secondary)]">
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Flutter</strong> - Cross-platform UI</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Rust</strong> - High-performance SDK backend</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">FFI</strong> - Flutter-Rust bridge</span>
-          </li>
-        </ul>
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          How The Magic Works
+        </h2>
+
+        <div
+          class="mermaid-container bg-[var(--bg-secondary)] rounded-lg p-6 mb-8 overflow-x-auto flex justify-center"
+        >
+          <pre class="mermaid bg-transparent">
+flowchart TB
+    subgraph PHONE[Your Phone]
+        P1[Flutter App with ActiveEnv SDK]
+    end
+    
+    subgraph LAPTOP[Your Laptop]
+        L1[Active CLI]
+        L2[Whisper STT]
+        L3[Your AI Agent]
+    end
+    
+    P1 -->|voice + screenshot + context| L1
+    L1 --> L2
+    L2 -->|transcribed command| L3
+    L3 -->|edits code| L1
+    L1 -->|hot reload| P1
+          </pre>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Key Features
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">🤖</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                Bring Your Own Agent (BYOA)
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                Works with Aider, GitHub Copilot CLI, Claude, or any CLI-based
+                AI coding tool. No vendor lock-in - use whatever agent you're
+                comfortable with.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">🎤</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                Local Speech-to-Text
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                Whisper runs locally on your laptop - no cloud transcription
+                needed. Your voice stays on your machine.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">📸</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                Rich Visual Context
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                The AI sees exactly what you see - screenshot, widget tree,
+                current route. It knows where you are in the app and what you're
+                looking at.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">⚡</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                Instant Hot Reload
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                Changes appear in seconds thanks to Flutter's hot reload. See
+                your fix immediately without rebuilding.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Getting Started
+        </h2>
+        <div
+          class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-8 overflow-x-auto"
+        >
+          <pre
+            class="text-sm text-[var(--text-secondary)] mono m-0"><code># New project with SDK pre-integrated
+active new my_app
+
+# Or add to existing project
+cd my_existing_app && active init
+
+# Start the magic
+active start</code></pre>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Tech Stack
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div>
+            <h3 class="text-[var(--accent)] mono text-sm mb-3">CLI (Rust)</h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1">
+              <li>• Axum HTTP server</li>
+              <li>• Tokio async runtime</li>
+              <li>• whisper-rs for transcription</li>
+              <li>• Clap for CLI parsing</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-[var(--accent)] mono text-sm mb-3">
+              SDK (Flutter)
+            </h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1">
+              <li>• Draggable FAB with states</li>
+              <li>• Audio recording</li>
+              <li>• Screenshot capture</li>
+              <li>• Widget tree inspection</li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="bg-[var(--accent-tint)] border border-[var(--accent)]/30 rounded-lg p-5"
+        >
+          <p class="text-[var(--text-secondary)] mb-0 text-sm">
+            <strong class="text-[var(--accent)]">Status:</strong> MVP complete and
+            functional. The core "sofa loop" works - voice → transcription → AI edit
+            → hot reload. Still needs documentation, published packages, and polish.
+          </p>
+        </div>
       </section>
     </article>
   </main>

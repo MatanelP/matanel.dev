@@ -1,123 +1,251 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import Header from '../../components/Header.astro'
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
 ---
 
-<Layout title="AirType | Voice-to-Text Desktop App">
+<Layout title="AirType | Voice-to-Text Anywhere">
   <Header />
-  
+
   <main class="px-6 lg:px-12 pt-24 pb-16">
     <article class="max-w-4xl mx-auto">
       <!-- Hero -->
       <header class="mb-12">
-        <a href="/#projects" class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block">
+        <a
+          href="/#projects"
+          class="text-[var(--accent)] mono text-sm hover:underline mb-4 inline-block"
+        >
           ← Back to Projects
         </a>
-        <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
-          AirType 🎤
-        </h1>
+        <div class="flex items-center gap-4 mb-4">
+          <img
+            src="/images/projects/airtype-icon.png"
+            alt="AirType icon"
+            class="w-16 h-16 rounded-2xl"
+          />
+          <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)]">
+            AirType
+          </h1>
+        </div>
         <p class="text-xl text-[var(--text-secondary)] mb-6">
-          Live voice-to-text desktop app. Press a hotkey anywhere, speak, and text appears at your cursor.
+          Turn your voice into text anywhere on your computer - offline,
+          private, instant.
         </p>
         <div class="flex flex-wrap gap-2 mb-6">
-          {["Rust", "Tauri", "Whisper", "TypeScript", "WebSocket"].map(tag => (
-            <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
-              {tag}
-            </span>
-          ))}
+          {
+            ["Rust", "Tauri", "Whisper AI", "Svelte"].map((tag) => (
+              <span class="bg-[var(--accent-tint)] text-[var(--accent)] px-3 py-1 rounded text-sm mono">
+                {tag}
+              </span>
+            ))
+          }
         </div>
         <div class="flex gap-4">
-          <a 
-            href="https://github.com/MatanelP/AirType" 
+          <a
+            href="https://github.com/MatanelP/AirType"
             target="_blank"
             class="border border-[var(--accent)] text-[var(--accent)] px-4 py-2 rounded hover:bg-[var(--accent-tint)] transition-colors mono text-sm"
           >
             View Source
           </a>
         </div>
+
+        <div class="mt-6 text-[var(--text-secondary)] text-sm">
+          <span class="text-[var(--accent)] mono">Status:</span> In active development
+          · Download coming soon
+        </div>
       </header>
 
       <!-- Content -->
       <section class="prose prose-invert max-w-none">
         <div class="bg-[var(--bg-secondary)] rounded-lg p-6 mb-8">
-          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">Overview</h2>
+          <h2 class="text-2xl font-bold text-[var(--text-primary)] mt-0 mb-4">
+            The Pitch
+          </h2>
           <p class="text-[var(--text-secondary)] mb-0">
-            AirType is a lightweight, cross-platform desktop application that transcribes your voice to text 
-            and inserts it directly at your cursor position. Works anywhere on your computer with a simple 
-            global hotkey. 100% offline - no data sent to the cloud.
+            Press a hotkey. Speak. Your words appear wherever your cursor is -
+            in any app, on any screen. Run it fully offline with local Whisper
+            AI, or connect your OpenAI API key for premium streaming accuracy.
+            Your choice, your data.
           </p>
         </div>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Features</h2>
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          How It Works
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-4 mb-8">
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5 text-center">
+            <div class="text-4xl mb-3">🎤</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              1. Press Your Hotkey
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Configure any hotkey you want - works anywhere on your computer
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5 text-center">
+            <div class="text-4xl mb-3">🗣️</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              2. Speak
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Talk naturally in English or Hebrew
+            </p>
+          </div>
+
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5 text-center">
+            <div class="text-4xl mb-3">⌨️</div>
+            <h3 class="text-[var(--text-primary)] font-semibold mb-2">
+              3. Text Appears
+            </h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-0">
+              Release and your words type themselves
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Key Features
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">🔒</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                100% Offline Option
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                Local Whisper AI runs entirely on your machine. Your voice never
+                touches the cloud - perfect for sensitive work, legal docs,
+                medical notes, or just privacy-conscious users.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">🌍</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                Multilingual
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                Dedicated hotkeys for English and Hebrew (with RTL support).
+                Switch languages mid-workflow without touching settings.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">⚡</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                Lightweight
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                Built with Tauri + Rust, not Electron. The entire app is under
+                10MB (vs 150MB+ for typical desktop apps). Near-zero CPU when
+                idle.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-[var(--accent)] text-2xl shrink-0">🎯</div>
+            <div>
+              <h3 class="text-[var(--text-primary)] font-semibold mb-1">
+                Works Anywhere
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mb-0">
+                Global hotkeys mean it works in any application - browsers,
+                terminals, Word, Slack, email clients, code editors. Wherever
+                you can type, you can speak.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Two Modes
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <h3 class="text-[var(--accent)] mono text-sm mb-2">
+              FREE - Local Whisper
+            </h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1 mb-0">
+              <li>• Completely offline</li>
+              <li>• Download model once (75MB - 3GB)</li>
+              <li>• Great accuracy</li>
+              <li>• No API costs ever</li>
+            </ul>
+          </div>
+          <div class="bg-[var(--bg-secondary)] rounded-lg p-5">
+            <h3 class="text-[var(--accent)] mono text-sm mb-2">
+              PREMIUM - OpenAI Realtime
+            </h3>
+            <ul class="text-[var(--text-secondary)] text-sm space-y-1 mb-0">
+              <li>• Live streaming transcription</li>
+              <li>• Best-in-class accuracy</li>
+              <li>• Bring your own API key</li>
+              <li>• Pay per use</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          Tech Under The Hood
+        </h2>
         <ul class="space-y-3 text-[var(--text-secondary)] mb-8">
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Global Hotkey Recording</strong> - Press a hotkey anywhere to start recording</span>
+            <span
+              ><strong class="text-[var(--text-primary)]">Tauri v2</strong> - Native
+              desktop framework (Rust backend, web frontend)</span
+            >
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Dual Language Support</strong> - English and Hebrew (more coming soon)</span>
+            <span
+              ><strong class="text-[var(--text-primary)]">whisper-rs</strong> - Rust
+              bindings to whisper.cpp for local ML inference</span
+            >
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Two Modes</strong> - Batch mode (more accurate) or Live mode (real-time)</span>
+            <span
+              ><strong class="text-[var(--text-primary)]">Svelte 5</strong> - Reactive
+              UI for settings and status display</span
+            >
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">100% Offline</strong> - Uses Whisper locally, your voice never leaves your machine</span>
+            <span
+              ><strong class="text-[var(--text-primary)]">enigo</strong> - Cross-platform
+              keyboard simulation for text injection</span
+            >
           </li>
           <li class="flex">
             <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">System Tray</strong> - Runs quietly in the background with near-zero resource usage</span>
+            <span
+              ><strong class="text-[var(--text-primary)]">WebSocket</strong> - OpenAI
+              Realtime API for premium streaming mode</span
+            >
           </li>
         </ul>
 
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Default Hotkeys</h2>
-        <div class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-8">
-          <table class="w-full text-[var(--text-secondary)] text-sm">
-            <thead>
-              <tr class="border-b border-[var(--text-secondary)]/20">
-                <th class="text-left py-2 text-[var(--text-primary)]">Hotkey</th>
-                <th class="text-left py-2 text-[var(--text-primary)]">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-[var(--text-secondary)]/10">
-                <td class="py-2 mono">Ctrl+Shift+Space</td>
-                <td class="py-2">Hold to record</td>
-              </tr>
-              <tr class="border-b border-[var(--text-secondary)]/10">
-                <td class="py-2 mono">Ctrl+Shift+R</td>
-                <td class="py-2">Toggle recording on/off</td>
-              </tr>
-              <tr>
-                <td class="py-2 mono">Ctrl+Shift+L</td>
-                <td class="py-2">Toggle language (EN/HE)</td>
-              </tr>
-            </tbody>
-          </table>
+        <div
+          class="bg-[var(--accent-tint)] border border-[var(--accent)]/30 rounded-lg p-5"
+        >
+          <p class="text-[var(--text-secondary)] mb-0 text-sm">
+            <strong class="text-[var(--accent)]">Why I built this:</strong> I wanted
+            voice typing that worked everywhere without sending my audio to the cloud.
+            Existing solutions were either web-only, required subscriptions, or were
+            bloated Electron apps. AirType is what I wanted: fast, private, and it
+            just works.
+          </p>
         </div>
-
-        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Tech Stack</h2>
-        <p class="text-[var(--text-secondary)] mb-4">
-          Built with Tauri for a lightweight, native desktop experience. The Rust backend handles 
-          audio capture and Whisper integration, while the TypeScript frontend provides a clean 
-          settings interface.
-        </p>
-        <ul class="space-y-2 text-[var(--text-secondary)]">
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Tauri</strong> - Native desktop app framework</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">Whisper.cpp</strong> - Local speech recognition</span>
-          </li>
-          <li class="flex">
-            <span class="text-[var(--accent)] mr-3">▸</span>
-            <span><strong class="text-[var(--text-primary)]">OpenAI Realtime API</strong> - Optional live mode via WebSocket</span>
-          </li>
-        </ul>
       </section>
     </article>
   </main>
