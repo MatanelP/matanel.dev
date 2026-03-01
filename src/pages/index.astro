@@ -163,7 +163,15 @@ const skills = [
         ></span>
       </h2>
 
-      <div class="space-y-5 text-[var(--text-secondary)] text-lg">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-10">
+        <div class="shrink-0 hidden md:block">
+          <img
+            src="/profile.jpeg"
+            alt="Matanel Pataky"
+            class="w-32 h-32 rounded-full object-cover border-2 border-[var(--accent)]/50"
+          />
+        </div>
+        <div class="space-y-5 text-[var(--text-secondary)] text-lg">
         <p>
           I'm a software engineer who builds tools that make developers' lives
           easier and systems that just work. My foundation in the field began
@@ -206,6 +214,7 @@ const skills = [
               ))
             }
           </div>
+        </div>
         </div>
       </div>
     </section>
